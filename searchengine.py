@@ -11,6 +11,8 @@ def search():
     print(query)
     # insert at line 0 character 0
     resultsTextbox.insert("0.0", "testfile.txt: " + "...Hello, this is a test.")
+    
+    print(countFiles())
 
 
 def countFiles():
