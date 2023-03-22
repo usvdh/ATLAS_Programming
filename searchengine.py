@@ -1,4 +1,5 @@
 import customtkinter
+import os
 
 root = customtkinter.CTk()
 root.geometry("500x500")
@@ -9,8 +10,21 @@ def search():
     query = queryEntry.get()
     print(query)
     # insert at line 0 character 0
-    resultsTextbox.insert("0.0", "testfile.txt: " +
-                          "...Hello, this is a test...")
+    resultsTextbox.insert("0.0", "testfile.txt: " + "...Hello, this is a test.")
+
+
+def countFiles():
+    fileList = []
+    fileCounter = -1 #to match index of array
+    
+    for root, dirs, files in os.walk("textfiles"):
+        for file in files:
+            if file.endswith('.txt'):
+                fileCounter += 1
+                fileList.append(file)
+                print(fileCounter)
+                print(fileList)
+    return fileList, fileCounter
 
 
 frame = customtkinter.CTkFrame(master=root)
