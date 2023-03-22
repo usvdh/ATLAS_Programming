@@ -14,6 +14,12 @@ def search():
     
     print(countFiles())
 
+    lines = open("textfiles/bear.txt", "r").readlines()
+    for line in lines:
+        if line.find(query) != -1:
+            print(query, 'is found')
+            print('Line Number:', lines.index(line))
+            print('Line:', line)
 
 def countFiles():
     fileList = []
@@ -24,8 +30,8 @@ def countFiles():
             if file.endswith('.txt'):
                 fileCounter += 1
                 fileList.append(file)
-                print(fileCounter)
-                print(fileList)
+                # print(fileCounter)
+                # print(fileList)
     return fileList, fileCounter
 
 
@@ -49,3 +55,4 @@ resultsTextbox = customtkinter.CTkTextbox(master=frame)
 resultsTextbox.pack(padx=10, pady=12)
 
 root.mainloop()
+
