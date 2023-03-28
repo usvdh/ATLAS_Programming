@@ -5,7 +5,7 @@ import os
 # We establish the root widget, which is a window with a title bar and other decoration provided by the window manager. This way, we initialize the customtkinter.
 # We give the root a size (this case 500x500 pixels)
 root = customtkinter.CTk()
-root.geometry("500x500")
+root.geometry("1000x500")
 
 def search():
     print("Test")
@@ -15,16 +15,19 @@ def search():
     # insert at line 0 character 0, plus the text you will see
     resultsTextbox.insert("0.0", "testfile.txt: " + "...Hello, this is a test.")
     # print the number of files there has been searched in
-    print(countFiles())
+    print(countFiles()[1])
+    # fileList = countFiles().fileList
 
     # Open all files and read all lines in the file
-    lines = open("textfiles/bear.txt", "r").readlines()
-    for line in lines:
-        # Check if the search query is present on a line
-        if line.find(query) != -1:
-            print(query, 'is found')
-            print('Line Number:', lines.index(line))
-            print('Line:', line)
+    for i in countFiles()[0]: 
+        lines = open("textfiles/" + i, "r").readlines()
+        for line in lines: 
+            # Check if the search query is present on a line
+            if line.find(query) != -1:
+                print(query, 'is found in ' + i)
+                print('Line Number:', lines.index(line))
+                print('Line:', line) 
+                resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "' " + "\n\n")
 
 #define number of files searched in
 def countFiles():
@@ -64,7 +67,7 @@ resultsLabel = customtkinter.CTkLabel(master=frame, text="Results")
 resultsLabel.pack(padx=10, pady=12)
 
 # Create textbox (where findings will be displayed), define what it looks like
-resultsTextbox = customtkinter.CTkTextbox(master=frame)
+resultsTextbox = customtkinter.CTkTextbox(master=frame, width=700)
 resultsTextbox.pack(padx=10, pady=12)
 
 root.mainloop()
