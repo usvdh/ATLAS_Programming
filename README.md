@@ -2,7 +2,7 @@
 
 This python project allows you to search for a word in a set of .txt files, and gives specific lines as a result. 
 
-https://github.com/usvdh/ATLAS_Programming
+<https://github.com/usvdh/ATLAS_Programming>
 
 ## About this Project
 
@@ -18,7 +18,7 @@ You will need customtkinter installed on your machine to run the code.
 ## How to run
 
     python searchengine.py
-    
+
 ## Remarks
 
 This has only been tested on macOS Ventura. If it doesn't work on your device, please reach out. 
