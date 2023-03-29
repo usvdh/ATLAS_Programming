@@ -14,12 +14,9 @@ def search():
     print(query)
     # insert at line 0 character 0, plus the text you will see
     resultsTextbox.insert("0.0", "testfile.txt: " + "...Hello, this is a test.")
-    # print the number of files there has been searched in
-    print(countFiles()[1])
-    # fileList = countFiles().fileList
 
     # Open all files and read all lines in the file
-    for i in countFiles()[0]: 
+    for i in detectFiles(): 
         lines = open("textfiles/" + i, "r").readlines()
         for line in lines: 
             # Check if the search query is present on a line
@@ -30,19 +27,16 @@ def search():
                 resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "' " + "\n\n")
 
 #define number of files searched in
-def countFiles():
+def detectFiles():
     fileList = []
-    fileCounter = -1 #to match index of array
     
     #For everything found in the system (this case only files), if it ends with '.txt', count it as 1 file
+    # For some reason it won't work when removing root and dirs, so still left in there.
     for root, dirs, files in os.walk("textfiles"):
         for file in files:
             if file.endswith('.txt'):
-                fileCounter += 1
                 fileList.append(file)
-                # print(fileCounter)
-                # print(fileList)
-    return fileList, fileCounter
+    return fileList
 
 # Establish how the interface will look like
 # Create frame, define what it looks like
