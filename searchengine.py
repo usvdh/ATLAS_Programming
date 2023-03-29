@@ -8,12 +8,7 @@ root = customtkinter.CTk()
 root.geometry("1000x500")
 
 def search():
-    print("Test")
-    # print query, so it says "Search query"
     query = queryEntry.get()
-    print(query)
-    # insert at line 0 character 0, plus the text you will see
-    resultsTextbox.insert("0.0", "testfile.txt: " + "...Hello, this is a test.")
 
     # Open all files and read all lines in the file
     for i in detectFiles(): 
@@ -21,10 +16,7 @@ def search():
         for line in lines: 
             # Check if the search query is present on a line
             if line.find(query) != -1:
-                print(query, 'is found in ' + i)
-                print('Line Number:', lines.index(line))
-                print('Line:', line) 
-                resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "' " + "\n\n")
+                resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
 
 #define number of files searched in
 def detectFiles():
@@ -37,6 +29,8 @@ def detectFiles():
             if file.endswith('.txt'):
                 fileList.append(file)
     return fileList
+
+# GUI derived from https://www.youtube.com/watch?v=iM3kjbbKHQU
 
 # Establish how the interface will look like
 # Create frame, define what it looks like
@@ -65,4 +59,3 @@ resultsTextbox = customtkinter.CTkTextbox(master=frame, width=700)
 resultsTextbox.pack(padx=10, pady=12)
 
 root.mainloop()
-
