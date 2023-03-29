@@ -25,17 +25,28 @@ def search():
     # Boolean for if no results are found. Has to be defined as False before every search
     found = False
     
+    # Get boolean for case sensitivity. If true, will be case sensitive.
+    caseSensitive = caseSensitiveCheckbox.get()
+    
     # Clears textbox. Has to be cleared before every search
     resultsTextbox.delete('1.0', customtkinter.END)
 
     # Open all files and read all lines in the file
     for file in detectFiles(): 
         lines = open("textfiles/" + file, "r").readlines()
-        for line in lines: 
+        
+        linesToBeSearched = lines
+        if caseSensitive == False:
+            linesToBeSearched = list(map(str.lower,lines))
+            query = query.lower()
+        
+        print(query)
+        
+        for line in linesToBeSearched: 
             # Check if the search query is present on a line
             # if find() finds no match, it returns -1, which is why "!= -1"
             if line.find(query) != -1:
-                resultsTextbox.insert("0.0", file + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
+                resultsTextbox.insert("0.0", file + ", Line " + str(linesToBeSearched.index(line)) + ": " + "'" + lines[linesToBeSearched.index(line)] + "'" + "\n\n")
                 found = True
     if found == False:
         resultsTextbox.insert("0.0", "No results were found.")
@@ -73,6 +84,9 @@ soogle.pack(padx=10, pady=12)
 queryEntry = customtkinter.CTkEntry(
     master=frame, placeholder_text="Search query")
 queryEntry.pack(padx=10, pady=12)
+
+caseSensitiveCheckbox = customtkinter.CTkCheckBox(master=frame, text="Case sensitive", onvalue=True, offvalue=False)
+caseSensitiveCheckbox.pack(padx=10, pady=12)
 
 # Create the button, define what it looks like
 button = customtkinter.CTkButton(master=frame, text="Search", command=search)
