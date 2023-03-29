@@ -19,7 +19,11 @@ def search():
     :return: Returns nothing, but inserts the search results to GUI textbox. 
     '''
     
+    # Gets query from searchquery entry box
     query = queryEntry.get()
+    
+    # Clears textbox
+    resultsTextbox.delete('1.0', customtkinter.END)
 
     # Open all files and read all lines in the file
     for i in detectFiles(): 
