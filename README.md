@@ -1,12 +1,12 @@
 # ATLAS_Programming
 
-This python project allows you to search for a word in a set of .txt files, and gives specific lines as a result. 
+This python project allows you to search for a word in a set of .txt files, and gives specific lines as a result.
 
 <https://github.com/usvdh/ATLAS_Programming>
 
 ## About this Project
 
-This project was made for the final assignment of the ATLAS Programming course given in SEM2, accounting for 4 EC. 
+This project was made for the final assignment of the ATLAS Programming course given in SEM2, accounting for 4 EC.
 
 ## Pre-requisites
 
@@ -21,7 +21,7 @@ You will need customtkinter installed on your machine to run the code.
 
 ## Remarks
 
-This has only been tested on macOS Ventura. If it doesn't work on your device, please reach out. 
+This has only been tested on macOS Ventura. If it doesn't work on your device, please reach out.
 
 ## Authors
 
