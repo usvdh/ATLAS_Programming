@@ -23,7 +23,6 @@ def search():
     # Open all files and read all lines in the file
     for i in detectFiles(): 
         lines = open("textfiles/" + i, "r").readlines()
-        print(lines)
         for line in lines: 
             # Check if the search query is present on a line
             # if find() finds no match, it returns -1, which is why "!= -1"
