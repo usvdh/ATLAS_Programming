@@ -22,7 +22,10 @@ def search():
     # Gets query from searchquery entry box
     query = queryEntry.get()
     
-    # Clears textbox
+    # Boolean for if no results are found. Has to be defined as False before every search
+    found = False
+    
+    # Clears textbox. Has to be cleared before every search
     resultsTextbox.delete('1.0', customtkinter.END)
 
     # Open all files and read all lines in the file
@@ -33,8 +36,9 @@ def search():
             # if find() finds no match, it returns -1, which is why "!= -1"
             if line.find(query) != -1:
                 resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
-            else:
-                resultsTextbox.insert("No results were found.")
+                found = True
+    if found == False:
+        resultsTextbox.insert("0.0", "No results were found.")
     return 
 
 def detectFiles():
