@@ -16,6 +16,10 @@ You will need customtkinter installed on your machine to run the code.
 ## How to run
 
     python searchengine.py
+    
+## Remarks
+
+This has only been tested on macOS Ventura. If it doesn't work on your device, please reach out. 
 
 ## Authors
 
