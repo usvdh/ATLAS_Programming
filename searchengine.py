@@ -33,6 +33,8 @@ def search():
             # if find() finds no match, it returns -1, which is why "!= -1"
             if line.find(query) != -1:
                 resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
+            else:
+                resultsTextbox.insert("No results were found.")
     return 
 
 def detectFiles():
