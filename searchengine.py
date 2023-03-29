@@ -1,6 +1,7 @@
 # Read README before running for pre-requisites.
 
 # Import libraries. customtkinter is used for the graphical user interface. os is used to detect the textfiles we want to search.
+# customtkinter was chosen over tkinter because tkinter gave me so many headaches. I promise I tried ;-;
 import customtkinter
 import os
 
