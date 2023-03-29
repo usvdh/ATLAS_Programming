@@ -29,13 +29,13 @@ def search():
     resultsTextbox.delete('1.0', customtkinter.END)
 
     # Open all files and read all lines in the file
-    for i in detectFiles(): 
-        lines = open("textfiles/" + i, "r").readlines()
+    for file in detectFiles(): 
+        lines = open("textfiles/" + file, "r").readlines()
         for line in lines: 
             # Check if the search query is present on a line
             # if find() finds no match, it returns -1, which is why "!= -1"
             if line.find(query) != -1:
-                resultsTextbox.insert("0.0", str(i) + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
+                resultsTextbox.insert("0.0", file + ", Line " + str(lines.index(line)) + ": " + "'" + line + "'" + "\n\n")
                 found = True
     if found == False:
         resultsTextbox.insert("0.0", "No results were found.")
