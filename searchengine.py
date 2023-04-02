@@ -15,7 +15,8 @@ def search():
     This function loops through all the files given by detectFiles() and finds the query input into the searchbox. 
     
     :param query: This is the query that was input into the searchbox in the GUI. 
-    :param lines: This stores all the lines seperately in an array. 
+    :param lines: This stores all the case-correct lines seperately in an array. 
+    :param linesToBeSearched: This stores all the lines seperately in an array in lower case, so that the program can look case-insensitively
     :return: Returns nothing, but inserts the search results to GUI textbox. 
     '''
     
@@ -35,19 +36,20 @@ def search():
     for file in detectFiles(): 
         lines = open("textfiles/" + file, "r").readlines()
         
+        # If caseSensitive checkbox is NOT ticked, make linesToBeSearched and the search query with lower case. 
         linesToBeSearched = lines
         if caseSensitive == False:
             linesToBeSearched = list(map(str.lower,lines))
             query = query.lower()
         
-        print(query)
-        
+        # For every line in file, search linesToBeSearched
         for line in linesToBeSearched: 
             # Check if the search query is present on a line
             # if find() finds no match, it returns -1, which is why "!= -1"
             if line.find(query) != -1:
                 resultsTextbox.insert("0.0", file + ", Line " + str(linesToBeSearched.index(line)) + ": " + "'" + lines[linesToBeSearched.index(line)] + "'" + "\n\n")
                 found = True
+    # If no results found
     if found == False:
         resultsTextbox.insert("0.0", "No results were found.")
     return 
@@ -69,7 +71,7 @@ def detectFiles():
                 fileList.append(file)
     return fileList
 
-# GUI derived from https://www.youtube.com/watch?v=iM3kjbbKHQU
+# GUI derived from https://www.youtube.com/watch?v=iM3kjbbKHQU, modified for our particular needs
 
 # Establish how the interface will look like
 # Create frame, define what it looks like
