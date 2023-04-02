@@ -32,7 +32,7 @@ def search():
     # Clears textbox. Has to be cleared before every search
     resultsTextbox.delete('1.0', customtkinter.END)
 
-    # Open all files and read all lines in the file
+    # For every file, open and read all lines
     for file in detectFiles(): 
         lines = open("textfiles/" + file, "r").readlines()
         
